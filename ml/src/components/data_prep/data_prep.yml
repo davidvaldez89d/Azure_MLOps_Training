@@ -1,0 +1,31 @@
+name: david_component_data_prep
+display_name: component_data_prep
+description: reads a .xl input, split the input to train and test
+version: 1
+type: command
+
+inputs:
+  data:
+    type: uri_folder
+  test_train_ratio:
+    type: number
+
+outputs:
+  train_data:
+    type: uri_folder
+    mode: rw_mount
+  test_data:
+    type: uri_folder
+    mode: rw_mount
+
+code: .
+
+environment: 
+  david_environment: 1.0
+
+command: >-
+  python data_prep.py
+  --data ${{inputs.data}}
+  --test_train_ratio ${{inputs.test_train_ratio}}
+  --train_data ${{outputs.train_data}}
+  --test_data ${{outputs.test_data}}

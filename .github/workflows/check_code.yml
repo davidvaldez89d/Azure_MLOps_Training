@@ -1,0 +1,25 @@
+name: check_code
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+      - develop
+jobs:
+  check_code:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout repository
+      uses: actions/checkout@v2
+    - name: Set up python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+    - name: dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pre-commit
+    - name: Run pre-commit
+      run: |
+        pre-commit run --all
