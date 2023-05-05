@@ -17,7 +17,7 @@ jobs:
       ENV: ${{ github.ref == 'refs/heads/main' && 'prd' || (github.ref == 'refs/heads/develop' && 'uat' || 'dev') }}
     steps:
     - name: Checkout repository
-      uses: actions/checout@v2
+      uses: actions/checkout@v2
     - name: azure login
       uses: azure/login@v1
       with:
