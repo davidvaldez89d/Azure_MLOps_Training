@@ -20,8 +20,7 @@ outputs:
 
 code: .
 
-environment:
-  david_environment: 1.0
+environment: azureml:AzureML-sklearn-1.0-ubuntu20.04-py38-cpu:1
 
 command: >-
   python data_prep.py
