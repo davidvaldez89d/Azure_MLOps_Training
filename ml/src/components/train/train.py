@@ -1,9 +1,10 @@
 import argparse
+import os
+
+import mlflow
+import pandas as pd
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import classification_report
-import os
-import pandas as pd
-import mlflow
 
 
 def select_first_file(path):

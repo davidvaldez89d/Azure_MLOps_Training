@@ -1,8 +1,9 @@
-import os
 import argparse
+import os
+
+import mlflow
 import pandas as pd
 from sklearn.model_selection import train_test_split
-import mlflow
 
 
 def main():
@@ -27,7 +28,7 @@ def main():
     credit_df = pd.read_excel(args.data, header=1, index_col=0)
 
     # YOUR CODE HERE
-    
+
     # Log the number of samples as "num_samples"
     mlflow.log_metric("num_samples", credit_df.shape[0])
     # Log the number of features as "num_features"
@@ -38,13 +39,13 @@ def main():
         test_size=args.test_train_ratio,
     )
 
-    # output paths are mounted as folder, therefore, we are adding a filename to the path
     credit_train_df.to_csv(os.path.join(args.train_data, "data.csv"), index=False)
 
     credit_test_df.to_csv(os.path.join(args.test_data, "data.csv"), index=False)
 
     # stop mlflow run
     mlflow.end_run()
+
 
 if __name__ == "__main__":
     main()

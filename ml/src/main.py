@@ -1,9 +1,8 @@
-import os
 import argparse
 import datetime
+import os
 
 from azure.ai.ml import Input, MLClient, dsl, load_component
-from azure.identity import DefaultAzureCredential
 from azure.ai.ml.constants import AssetTypes, TimeZone
 from azure.ai.ml.entities import (
     Data,
@@ -12,7 +11,7 @@ from azure.ai.ml.entities import (
     RecurrencePattern,
     RecurrenceTrigger,
 )
-
+from azure.identity import DefaultAzureCredential
 
 # User
 user_name = "david"
@@ -80,29 +79,36 @@ job_env_conda = Environment(
     description="Custom environment for Credit Defaults Pipeline",
     image="mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest",
     conda_file=os.path.join(dependencies_dir, "conda.yaml"),
-    tags={"creator": user_name}
+    tags={"creator": user_name},
     version="1.0",
 )
 
 # Register the environment
 pipeline_job_env = ml_client.environments.create_or_update(job_env_conda)
-print(f"Created environment {pipeline_job_env.name}, version {pipeline_job_env.version}")
+print(
+    f"Created environment {pipeline_job_env.name},"
+    f"version {pipeline_job_env.version}"
+)
 
 
 # load component data_prep
 data_prep_component = load_component(
-    source=os.path.join(data_prep_src_dir, "data_prep.yml")
+    source=os.path.join(data_prep_src_dir, "data_prep.yaml")
 )
 # data_prep_component = ml_client.create_or_update(data_prep_component)
-print(f"Component {data_prep_component.name} with Version {data_prep_component.version} is registered")
+print(
+    f"Component {data_prep_component.name},"
+    f" with Version {data_prep_component.version} is registered"
+)
 
 
 # load component train
-train_component = load_component(
-    source=os.path.join(train_src_dir, "train.yml")
-)
+train_component = load_component(source=os.path.join(train_src_dir, "train.yaml"))
 # train_component = ml_client.create_or_update(train_component)
-print(f"Component {train_component.name} with Version {train_component.version} is registered")
+print(
+    f"Component {train_component.name},"
+    f" with Version {train_component.version} is registered"
+)
 
 
 # Create pipeline
@@ -127,7 +133,6 @@ def credit_defaults_pipeline(
         test_data=data_prep_job.outputs.test_data,
         learning_rate=pipeline_job_learning_rate,
         registered_model_name=pipeline_job_registered_model_name,
-    
     )
 
     # a pipeline returns a dictionary of outputs

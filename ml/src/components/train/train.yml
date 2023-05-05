@@ -1,6 +1,6 @@
 name: david_component_train
 display_name: component_train
-description: train job for azure mlops 
+description: train job for azure mlops
 version: 1
 type: command
 
@@ -20,13 +20,13 @@ outputs:
 
 code: .
 
-environment: 
+environment:
   azureml:AzureML-sklearn-1.0-ubuntu20.04-py38-cpu:1
 
 command: >-
-  python train.py 
+  python train.py
   --train_data ${{inputs.train_data}}
   --test_data ${{inputs.test_data}}
-  --learning_rate ${{inputs.learning_rate}} 
-  --registered_model_name ${{inputs.registered_model_name}} 
+  --learning_rate ${{inputs.learning_rate}}
+  --registered_model_name ${{inputs.registered_model_name}}
   --model ${{outputs.model}}
