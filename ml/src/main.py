@@ -69,10 +69,6 @@ print(
 )
 
 
-# Create compute
-print(f"Got compute instance {compute_cluster_name.name}")
-
-
 # Create job environment for pipeline
 job_env_conda = Environment(
     name=f"{user_name}_environment",
