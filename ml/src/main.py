@@ -71,7 +71,7 @@ print(
 
 # Create job environment for pipeline
 job_env_conda = Environment(
-    name=f"{user_name}_environment",
+    name=f"{env}_{user_name}_aml-scikit-learn",
     description="Custom environment for Credit Defaults Pipeline",
     image="mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest",
     conda_file=os.path.join(dependencies_dir, "conda.yaml"),
