@@ -21,7 +21,7 @@ outputs:
 code: .
 
 environment:
-  conda_file: ../dependencies/conda.yaml
+  conda_file: ../../dependencies/conda.yaml
   image: mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20211124.v1
 
 command: >-
