@@ -1,5 +1,5 @@
 name: david_component_data_prep
-display_name: component_data_prep
+display_name: david_component_data_prep
 description: reads a .xl input, split the input to train and test
 version: 1
 type: command
