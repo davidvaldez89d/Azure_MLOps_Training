@@ -143,8 +143,8 @@ def credit_defaults_pipeline(
 registered_model_name = f"{env}_{user_name}_credit_defaults_model"
 pipeline = credit_defaults_pipeline(
     pipeline_job_data_input=Input(type="uri_file", path=credit_data.path),
-    pipeline_job_test_train_ratio=0.80,
-    pipeline_job_learning_rate=0.10,
+    pipeline_job_test_train_ratio=0.20,
+    pipeline_job_learning_rate=0.15,
     pipeline_job_registered_model_name=registered_model_name,
 )
 print(f"Pipeline {pipeline.name} is created")
