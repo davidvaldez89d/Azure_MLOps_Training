@@ -1,5 +1,5 @@
 name: david_component_train
-display_name: component_train
+display_name: david_component_train
 description: train job for azure mlops
 version: 1
 type: command
