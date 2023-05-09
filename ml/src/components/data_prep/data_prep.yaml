@@ -25,8 +25,4 @@ environment:
   image: mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04:20211124.v1
 
 command: >-
-  python data_prep.py
-  --data ${{inputs.data}}
-  --test_train_ratio ${{inputs.test_train_ratio}}
-  --train_data ${{outputs.train_data}}
-  --test_data ${{outputs.test_data}}
+  python data_prep.py --data ${{inputs.data}} --test_train_ratio ${{inputs.test_train_ratio}} --train_data ${{outputs.train_data}} --test_data ${{outputs.test_data}}
